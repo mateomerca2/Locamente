@@ -131,6 +131,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   line-height: 1.05;
   background: linear-gradient(160deg, #FFD9E3 20%, #fff 60%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 20px;
 }
@@ -168,6 +169,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   padding-right: 60px;
   background: linear-gradient(90deg, #E9FFFF, #FFD9E3 50%, #FFADBE 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 @keyframes marqueeScroll {
@@ -196,6 +198,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   background: linear-gradient(180deg, #FFD9E3, #fff);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 16px;
 }
@@ -221,6 +224,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   text-transform: uppercase;
   background: linear-gradient(90deg, #fff, #FFD9E3);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .article01.emblemm5 .mbr-section-title {
@@ -233,6 +237,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   background: linear-gradient(90deg, #fff, #FFD9E3 60%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
   margin-bottom: 28px;
@@ -273,6 +278,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   text-transform: uppercase;
   background: linear-gradient(90deg, #fff, #E9FFFF);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .article02.emblemm5 .mbr-section-title {
@@ -317,6 +323,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   font-size: clamp(2.2rem, 4vw, 3.5rem);
   background: linear-gradient(0deg, #FFD9E3, #fff 55%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 22px;
 }
@@ -519,6 +526,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   margin-bottom: 10px;
   background: linear-gradient(#FFD9E3, transparent 120%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: Georgia, serif;
 }
@@ -628,6 +636,7 @@ h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
   margin-bottom: 28px;
   background: linear-gradient(90deg, #E9FFFF, #fff);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
