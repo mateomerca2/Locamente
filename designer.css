@@ -1,0 +1,87 @@
+*{
+  box-shadow:none;
+  border-color:#FFD9E3;
+}
+
+.side-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.side-buttons button,
+.danger-btn{
+  flex:1;
+  border:none;
+  padding:12px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.side-buttons button{
+  background:#210910;
+  color:white;
+}
+
+.side-buttons button.active{
+  background:#FFADBE;
+  color:#210910;
+}
+
+.danger-btn{
+  margin-top:20px;
+  background:#8A3D54;
+  color:white;
+}
+
+.danger-btn:hover{
+  background:#ff5f7d;
+}
+
+.preview-panel{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.shirt-container{
+  position:relative;
+  width:100%;
+  max-width:550px;
+}
+
+.shirt-container img{
+  width:100%;
+  display:block;
+  user-select:none;
+  pointer-events:none;
+}
+
+#designCanvas{
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+@media(max-width:991px){
+
+  .designer-layout{
+    grid-template-columns:1fr;
+  }
+
+  .topbar{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .topbar h1{
+    text-align:center;
+    font-size:2.4rem;
+  }
+
+  .controls-panel{
+    width:100%;
+  }
+
+}
