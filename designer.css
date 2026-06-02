@@ -1,87 +1,385 @@
-*{
-  box-shadow:none;
-  border-color:#FFD9E3;
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #210910;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; }
+h1, h2, h3, h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn-primary {
+  background: linear-gradient(135deg, #8A3D54, #FFADBE);
+  border: none;
+  color: #210910;
+  font-weight: 700;
+  padding: 12px 36px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #FFD9E3, #fff);
+  color: #210910;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,173,190,0.4);
 }
 
-.side-buttons{
-  display:flex;
-  gap:10px;
+/* ============================================================
+   DESIGNER PAGE – LAYOUT
+============================================================ */
+.designer-page {
+  min-height: 100vh;
+  padding: 0 0 5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.side-buttons button,
-.danger-btn{
-  flex:1;
-  border:none;
-  padding:12px;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  transition:0.3s;
+/* Fondo con gradiente sutil igual al resto de la página */
+.designer-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(138,61,84,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(233,255,255,0.07) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.side-buttons button{
-  background:#210910;
-  color:white;
+/* ============================================================
+   TOPBAR
+============================================================ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #210910;
+  box-shadow: 0 1px 20px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  min-height: 80px;
+  gap: 1.5rem;
 }
 
-.side-buttons button.active{
-  background:#FFADBE;
-  color:#210910;
+.back-btn {
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 22px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent;
+  transition: all 0.3s;
+  white-space: nowrap;
+  position: relative;
+}
+.back-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 22px; right: 22px;
+  height: 2px;
+  background: linear-gradient(90deg, #FFD9E3, #E9FFFF);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  border-radius: 2px;
+}
+.back-btn:hover {
+  color: #FFD9E3;
+  border-color: rgba(255,173,190,0.4);
+}
+.back-btn:hover::after { transform: scaleX(1); }
+
+.topbar h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  background: linear-gradient(160deg, #FFD9E3 20%, #fff 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-align: center;
+  flex: 1;
 }
 
-.danger-btn{
-  margin-top:20px;
-  background:#8A3D54;
-  color:white;
+/* Placeholder para mantener h1 centrado cuando no hay elemento a la derecha */
+.topbar-spacer {
+  width: 107px; /* igual ancho que .back-btn aprox */
+  flex-shrink: 0;
 }
 
-.danger-btn:hover{
-  background:#ff5f7d;
+/* ============================================================
+   DESIGNER LAYOUT – GRID PRINCIPAL
+============================================================ */
+.designer-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
+  padding: 2.5rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.preview-panel{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* ============================================================
+   CONTROLS PANEL
+============================================================ */
+.controls-panel {
+  background: #33121C;
+  border-radius: 16px;
+  border: 1px solid rgba(255,173,190,0.15);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-self: start;
+  position: sticky;
+  top: 100px; /* debajo del topbar */
 }
 
-.shirt-container{
-  position:relative;
-  width:100%;
-  max-width:550px;
+.controls-panel h2 {
+  font-size: 1.8rem;
+  background: linear-gradient(160deg, #FFD9E3 20%, #fff 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
 }
 
-.shirt-container img{
-  width:100%;
-  display:block;
-  user-select:none;
-  pointer-events:none;
+.controls-panel label {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  display: block;
 }
 
-#designCanvas{
-  position:absolute;
-  top:0;
-  left:0;
+/* Selects */
+.controls-panel .form-select {
+  background-color: #210910;
+  border: 1px solid #8A3D54 !important;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FFD9E3' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 10px;
+}
+.controls-panel .form-select:focus {
+  border-color: #E9FFFF !important;
+  box-shadow: 0 0 0 3px rgba(233,255,255,0.1) !important;
+  outline: none;
+}
+.controls-panel .form-select option {
+  background: #210910;
+  color: #fff;
 }
 
-@media(max-width:991px){
+/* File input */
+.controls-panel .form-control {
+  background: #210910;
+  border: 1px solid #8A3D54 !important;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+.controls-panel .form-control:focus {
+  border-color: #E9FFFF !important;
+  box-shadow: 0 0 0 3px rgba(233,255,255,0.1) !important;
+  outline: none;
+}
+.controls-panel .form-control::file-selector-button {
+  background: linear-gradient(135deg, #8A3D54, #FFADBE);
+  border: none;
+  color: #210910;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-right: 12px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.controls-panel .form-control::file-selector-button:hover {
+  background: linear-gradient(135deg, #FFD9E3, #fff);
+}
 
-  .designer-layout{
-    grid-template-columns:1fr;
+/* Botones de lado (Frente / Espalda) */
+.side-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.side-buttons button {
+  flex: 1;
+  border: 1px solid rgba(255,173,190,0.2);
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #210910;
+  color: rgba(255,255,255,0.7);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+}
+.side-buttons button:hover {
+  border-color: rgba(255,173,190,0.5);
+  color: #FFD9E3;
+}
+.side-buttons button.active {
+  background: linear-gradient(135deg, #8A3D54, #FFADBE);
+  color: #210910;
+  border-color: transparent;
+}
+
+/* Botón eliminar diseño */
+.danger-btn {
+  margin-top: 24px;
+  width: 100%;
+  border: none;
+  padding: 13px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(138,61,84,0.3);
+  color: #FFADBE;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid rgba(138,61,84,0.5);
+  letter-spacing: 0.5px;
+}
+.danger-btn:hover {
+  background: #8A3D54;
+  color: #fff;
+  border-color: #8A3D54;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(138,61,84,0.4);
+}
+
+/* ============================================================
+   PREVIEW PANEL
+============================================================ */
+.preview-panel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 1rem;
+  position: relative;
+}
+
+/* Halo de fondo detrás de la remera */
+.preview-panel::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(138,61,84,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.shirt-container {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.6));
+  transition: filter 0.3s;
+}
+.shirt-container:hover {
+  filter: drop-shadow(0 24px 70px rgba(138,61,84,0.35));
+}
+
+.shirt-container img {
+  width: 100%;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+#designCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 991px) {
+  .designer-layout {
+    grid-template-columns: 1fr;
   }
 
-  .topbar{
-    flex-direction:column;
-    gap:20px;
+  .controls-panel {
+    position: static;
+    width: 100%;
   }
 
-  .topbar h1{
-    text-align:center;
-    font-size:2.4rem;
+  .topbar {
+    flex-direction: column;
+    gap: 16px;
+    padding: 1rem 1.5rem;
+    min-height: auto;
   }
 
-  .controls-panel{
-    width:100%;
+  .topbar h1 {
+    text-align: center;
+    font-size: 2.4rem;
   }
 
+  .topbar-spacer { display: none; }
+
+  .back-btn {
+    align-self: flex-start;
+  }
+
+  .preview-panel {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .designer-layout {
+    padding: 1.5rem 1rem;
+  }
+
+  .controls-panel {
+    padding: 22px 16px;
+  }
 }
